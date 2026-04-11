@@ -2,18 +2,18 @@
 
 ## 📌 Overview
 
-Vision Maths is an AI-based project that converts handwritten mathematical expressions into digital text using OCR techniques.
-It is designed to assist visually impaired students in learning mathematics.
+Vision Maths is an Deep-learning-based project that converts handwritten mathematical expressions into digital text using OCR techniques.
+It is designed to assist visually impaired students in learning mathematics and can be extended to Braille-based systems.
 
 ---
 
 ## 🚀 Features
 
-* Handwritten digit recognition
-* OCR pipeline using OpenCV
-* CNN-based classification
-* React frontend
-* Extendable to Braille systems
+* ✍️ Handwritten digit recognition
+* 🔍 OCR pipeline using OpenCV
+* 🧠 CNN-based classification
+* 🌐 Interactive React frontend
+* 🔤 Extendable to Braille systems
 
 ---
 
@@ -35,22 +35,40 @@ It is designed to assist visually impaired students in learning mathematics.
 
 ## ⚙️ Setup Instructions
 
-### 🔹 Backend
+### 🔹 1. Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/Vision-Maths.git
+cd Vision-Maths
+```
+
+---
+
+### 🔹 2. Backend Setup
 
 ```bash
 cd backend
+
+# Create virtual environment
 python -m venv .venv
+
+# Activate (Windows)
 .venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Run backend
 python ocr_processor.py
 ```
 
 ---
 
-### 🔹 Frontend
+### 🔹 3. Frontend Setup
 
 ```bash
 cd frontend
+
 npm install
 npm run start
 ```
@@ -60,7 +78,7 @@ npm run start
 ## 📂 Project Structure
 
 ```
-Capstone-Project-main/
+Vision-Maths/
 │── backend/
 │── frontend/
 │── requirements.txt
@@ -72,22 +90,30 @@ Capstone-Project-main/
 
 ## 🎯 Use Case
 
-* Helps visually impaired students
-* Converts handwritten math → digital text
-* Can be extended to Braille
+* Helps visually impaired students understand mathematics
+* Converts handwritten input → digital text
+* Can be extended to Braille-based learning systems
+
+---
+
+## 📈 Future Scope
+
+* Support for complex mathematical expressions
+* Voice-based interaction
+* Real-time OCR using camera input
 
 ---
 
 ## 👨‍💻 Authors
 
-Nikhil Sharma
-Anushka Verma
-Bhavya 
-Aryan Misra
-Hrshit Raj
+* Nikhil Sharma
+* Anushka Verma
+* Bhavya
+* Aryan Misra
+* Harshit Raj
 
 ---
 
 ## 📜 License
 
-MIT License
+This project is licensed under the MIT License.
