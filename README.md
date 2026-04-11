@@ -84,7 +84,7 @@ Nikhil Sharma
 Anushka Verma
 Bhavya 
 Aryan Misra
-Hrshit Raj
+Harshit Raj
 
 ---
 
