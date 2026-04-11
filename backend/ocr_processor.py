@@ -7,12 +7,19 @@ import io
 import requests
 import tensorflow as tf  # CNN model ke liye
 import threading
+import os
 
 app = Flask(__name__)
 CORS(app)  # allow frontend requests from React
 
 # ==== 1. CNN MODEL LOAD (path apne hisaab se set karo) ====
-MODEL_PATH = r"C:\Users\sai\Desktop\ML projects\Capstone\Models\cnn_model.h5"
+# Get current file directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Model path (relative)
+MODEL_PATH = os.path.join(BASE_DIR, "..", "model", "cnn_model.h5")
+# Normalize path
+MODEL_PATH = os.path.normpath(MODEL_PATH)
+# Load model
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # index -> symbol mapping (tumhare Colab wale mapping ke hisaab se)
