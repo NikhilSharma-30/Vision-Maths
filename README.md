@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-Vision Maths is an AI-based project that converts handwritten mathematical expressions into digital text using OCR techniques.
+Vision Maths is an Deep learning-based project that converts handwritten mathematical expressions into digital text using OCR techniques.
 It is designed to assist visually impaired students in learning mathematics and can be extended to Braille-based systems.
 
 ---
