@@ -1,0 +1,8 @@
+flask
+flask-cors
+pytesseract
+pillow
+numpy
+opencv-python
+easyocr
+tensorflow
