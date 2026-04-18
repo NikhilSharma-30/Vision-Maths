@@ -1,8 +1,6 @@
 flask
 flask-cors
-pytesseract
 pillow
 numpy
 opencv-python-headless
-easyocr
 tensorflow==2.13.0
