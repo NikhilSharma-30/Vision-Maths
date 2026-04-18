@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)  # allow frontend requests from React
 
 # ==== 1. CNN MODEL LOAD (path apne hisaab se set karo) ====
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.h5")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.keras")
 model = None
 
 # index -> symbol mapping (tumhare Colab wale mapping ke hisaab se)
@@ -177,7 +177,6 @@ def process_ocr():
         model = tf.keras.models.load_model(
             MODEL_PATH,
             compile=False,
-            safe_mode=False
         )
 
 
