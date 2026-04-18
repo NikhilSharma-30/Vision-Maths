@@ -13,13 +13,7 @@ app = Flask(__name__)
 CORS(app)  # allow frontend requests from React
 
 # ==== 1. CNN MODEL LOAD (path apne hisaab se set karo) ====
-# Get current file directory
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# Model path (relative)
-MODEL_PATH = os.path.join(BASE_DIR, "..", "model", "cnn_model.h5")
-# Normalize path
-MODEL_PATH = os.path.normpath(MODEL_PATH)
-# Load model
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.h5")
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # index -> symbol mapping (tumhare Colab wale mapping ke hisaab se)
@@ -213,7 +207,7 @@ def process_ocr():
             "mode": mode
         }), 400
 
-    # ✅ Force remove all spaces from equation & result (if any)
+    # Force remove all spaces from equation & result (if any)
     if isinstance(equation, str):
         equation = equation.replace(" ", "")
     if isinstance(result, str):
@@ -247,5 +241,6 @@ def process_ocr():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
     
