@@ -174,12 +174,15 @@ def process_ocr():
     #LAZY LOAD MODEL HERE
     if model is None:
         MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.keras")
-        model = tf.keras.models.load_model(
-            MODEL_PATH,
-            compile=False,
-        )
-
-
+    print("==== DEBUG START ====")
+    print("Current directory:", os.path.dirname(__file__))
+    print("Files in backend:", os.listdir(os.path.dirname(__file__)))
+    print("MODEL PATH:", MODEL_PATH)
+    print("==== DEBUG END ====")
+    model = tf.keras.models.load_model(
+        MODEL_PATH,
+        compile=False,
+    )
     # React se "image" field aani chahiye (multipart/form-data)
     if "image" not in request.files:
         return jsonify({"error": "No image uploaded"}), 400
