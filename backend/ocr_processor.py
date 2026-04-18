@@ -14,11 +14,7 @@ CORS(app)  # allow frontend requests from React
 
 # ==== 1. CNN MODEL LOAD (path apne hisaab se set karo) ====
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.h5")
-model = tf.keras.models.load_model(
-    MODEL_PATH,
-    compile=False,
-    safe_mode=False
-)
+model = None
 
 # index -> symbol mapping (tumhare Colab wale mapping ke hisaab se)
 IDX_TO_TOKEN = {
@@ -173,6 +169,18 @@ def predict_equation_from_crops(crops, model):
 
 @app.route("/ocr", methods=["POST"])
 def process_ocr():
+    global model  # 👈 IMPORTANT
+    
+    #LAZY LOAD MODEL HERE
+    if model is None:
+        MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.h5")
+        model = tf.keras.models.load_model(
+            MODEL_PATH,
+            compile=False,
+            safe_mode=False
+        )
+
+
     # React se "image" field aani chahiye (multipart/form-data)
     if "image" not in request.files:
         return jsonify({"error": "No image uploaded"}), 400
@@ -247,4 +255,5 @@ def process_ocr():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-    
+
+
