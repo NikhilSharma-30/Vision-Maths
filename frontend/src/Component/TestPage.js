@@ -99,7 +99,7 @@ useEffect(() => {
     formData.append("mode", testMode ? "test" : "learn");
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/ocr", {
+      const response = await fetch("https://vision-maths-backend.onrender.com/ocr", {
         method: "POST",
         body: formData,
       });
