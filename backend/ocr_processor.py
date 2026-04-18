@@ -14,7 +14,7 @@ CORS(app)  # allow frontend requests from React
 
 # ==== 1. CNN MODEL LOAD (path apne hisaab se set karo) ====
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.h5")
-model = tf.keras.models.load_model(MODEL_PATH)
+model = tf.keras.models.load_model(MODEL_PATH, compile=False)
 
 # index -> symbol mapping (tumhare Colab wale mapping ke hisaab se)
 IDX_TO_TOKEN = {
