@@ -173,7 +173,7 @@ def process_ocr():
     
     #LAZY LOAD MODEL HERE
     if model is None:
-        MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.h5")
+        MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.keras")
         model = tf.keras.models.load_model(
             MODEL_PATH,
             compile=False,
