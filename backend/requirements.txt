@@ -5,4 +5,4 @@ pillow
 numpy
 opencv-python-headless
 easyocr
-tensorflow
+tensorflow==2.13.0
