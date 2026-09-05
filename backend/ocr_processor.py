@@ -171,18 +171,54 @@ def predict_equation_from_crops(crops, model):
 def process_ocr():
     global model  # 👈 IMPORTANT
     
-    #LAZY LOAD MODEL HERE
+     # =====================================================
+    # NEW/CHANGED: LOAD MODEL ONLY ONCE
+    # =====================================================
+    #
+    # First request:
+    #     model == None
+    #     -> load cnn_model.keras
+    #
+    # Next requests:
+    #     model != None
+    #     -> DON'T load model again
+    #
+    # This keeps the model in RAM and avoids repeatedly
+    # loading TensorFlow + cnn_model.keras.
+    # =====================================================
+    
+    
     if model is None:
-        MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.keras")
-    print("==== DEBUG START ====")
-    print("Current directory:", os.path.dirname(__file__))
-    print("Files in backend:", os.listdir(os.path.dirname(__file__)))
-    print("MODEL PATH:", MODEL_PATH)
-    print("==== DEBUG END ====")
-    model = tf.keras.models.load_model(
-        MODEL_PATH,
-        compile=False,
-    )
+
+        print("==== LOADING CNN MODEL ====")
+
+        print(
+            "Current directory:",
+            os.path.dirname(__file__)
+        )
+
+        print(
+            "Files in backend:",
+            os.listdir(
+                os.path.dirname(__file__)
+            )
+        )
+
+        print(
+            "MODEL PATH:",
+            MODEL_PATH
+        )
+
+        print(
+            "==== LOADING MODEL... ===="
+        )
+        model = tf.keras.models.load_model(
+                MODEL_PATH,
+                compile=False,
+                safe_mode=False
+        )
+        print("==== CNN MODEL LOADED SUCCESSFULLY ====")
+        print("==== DEBUG END ====")
     # React se "image" field aani chahiye (multipart/form-data)
     if "image" not in request.files:
         return jsonify({"error": "No image uploaded"}), 400
